@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zephyr — coming soon</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --bg-color: #000;
+      --text-color: #fff;
+      --accent-color: rgba(255,255,255,0.08);
+    }
+    * {
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", sans-serif;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .glow {
+      position: absolute;
+      width: 40vmax;
+      height: 40vmax;
+      background: radial-gradient(
+        circle at 50% 50%,
+        rgba(255,255,255,0.08) 0%,
+        rgba(0,0,0,0) 70%
+      );
+      filter: blur(80px);
+      opacity: 0.4;
+      animation: float 6s ease-in-out infinite;
+    }
+    .glow.glow-1 {
+      top: -10vmax;
+      left: -10vmax;
+    }
+    .glow.glow-2 {
+      bottom: -10vmax;
+      right: -10vmax;
+      animation-delay: 3s;
+    }
+    @keyframes float {
+      0%   { transform: translate3d(0,0,0) scale(1);   opacity: 0.35; }
+      50%  { transform: translate3d(0,-2vmax,0) scale(1.05); opacity: 0.5; }
+      100% { transform: translate3d(0,0,0) scale(1);   opacity: 0.35; }
+    }
+    .wrapper {
+      position: relative;
+      text-align: center;
+      z-index: 10;
+      padding: 2rem 1.5rem;
+      max-width: min(90vw, 600px);
+      background: radial-gradient(
+        circle at 50% 0%,
+        rgba(255,255,255,0.07) 0%,
+        rgba(0,0,0,0) 60%
+      );
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.07);
+      box-shadow:
+        0 30px 120px rgba(0,0,0,0.9),
+        0 0 200px rgba(255,255,255,0.08) inset;
+      animation: fadeIn 1.2s ease both;
+    }
+    @keyframes fadeIn {
+      0%   { opacity: 0; transform: translateY(12px) scale(.98);}
+      100% { opacity: 1; transform: translateY(0) scale(1);}
+    }
+    .logo {
+      font-size: clamp(2.5rem, 2vw + 2rem, 3rem);
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      background-image: linear-gradient(90deg, #fff 0%, #bbb 50%, #fff 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: shine 4s linear infinite;
+      user-select: none;
+    }
+    @keyframes shine {
+      0%   { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+    .subtitle {
+      margin-top: 1rem;
+      font-size: clamp(.9rem, .2vw + .8rem, 1rem);
+      font-weight: 400;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.5;
+      user-select: none;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      margin-top: 2rem;
+      padding: .5rem .9rem;
+      font-size: .8rem;
+      font-weight: 500;
+      line-height: 1.2;
+      color: rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 999px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 0 30px rgba(255,255,255,0.25);
+      animation: pop 2s ease-in-out infinite;
+    }
+    @keyframes pop {
+      0%   { box-shadow: 0 0 20px rgba(255,255,255,0.3); }
+      50%  { box-shadow: 0 0 60px rgba(255,255,255,0.6); }
+      100% { box-shadow: 0 0 20px rgba(255,255,255,0.3); }
+    }
+    .dot {
+      width: .5rem;
+      height: .5rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 0 12px rgba(255,255,255,0.9);
+      animation: blink 1.4s infinite;
+    }
+    @keyframes blink {
+      0%,100% { opacity: 1; }
+      50%     { opacity: .4; }
+    }
+    .footer {
+      margin-top: 2rem;
+      font-size: .7rem;
+      line-height: 1.4;
+      color: rgba(255,255,255,0.35);
+      user-select: none;
+    }
+    .contact {
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .contact:hover {
+      color: #fff;
+      transform: scale(1.05);
+    }
+    .contact svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+  </style>
+</head>
+<body>
+  <div class="glow glow-1"></div>
+  <div class="glow glow-2"></div>
+  <main class="wrapper">
+    <div class="logo">zephyr</div>
+    <p class="subtitle">Intelligent answers. Zero friction.</p>
+    <div class="chip">
+      <div class="dot"></div>
+      <span>coming&nbsp;soon…</span>
+    </div>
+    <a class="contact" href="https://t.me/usernocta" target="_blank">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 0C5.372 0 0 5.372 0 12c0 6.627 5.372 12 12 12s12-5.373 12-12C24 5.372 18.628 0 12 0zm5.403 7.931l-1.847 8.717c-.139.624-.502.777-1.015.483l-2.805-2.067-1.353 1.302c-.15.15-.275.275-.564.275l.201-2.856 5.198-4.695c.226-.201-.049-.314-.351-.113l-6.422 4.046-2.767-.865c-.602-.188-.614-.602.126-.89l10.818-4.173c.502-.188.939.113.778.879z"/>
+      </svg>
+      <span>@usernocta</span>
+    </a>
+    <div class="footer">
+      © 2025 Zephyr
+    </div>
+  </main>
+</body>
+</html>
